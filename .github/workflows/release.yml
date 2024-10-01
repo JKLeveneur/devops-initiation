@@ -1,8 +1,8 @@
 name: publish
 on:
-  pull_request:
+  push:
     branches:
-      - release
+      - main
 jobs:
   publish-devops-initiation-docker-image:
     runs-on: ubuntu-latest
