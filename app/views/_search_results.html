@@ -1,8 +1,11 @@
 <hr>
 
 <div class="panel panel-default search-results">
-  <div class="panel-heading">
+  <div class="panel-heading" style="display: flex; justify-content: space-between; align-items: center">
     <h3 class="panel-title">Search Results</h3>
+    <form action="/zip?tags=<%= tagsParameter %>&tagmode=<%= tagmodeParameter %>" method="post">
+      <button type="submit" class="btn btn-primary">Zipper le résultat</button>
+    </form>
   </div>
   <div class="panel-body">
 

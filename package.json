@@ -17,10 +17,20 @@
     "prettier": "prettier --write app/*.js app/__{tests,mocks}__/*.js e2e_tests/*.js"
   },
   "dependencies": {
+    "@google-cloud/pubsub": "^4.7.2",
+    "@google-cloud/storage": "^7.13.0",
+    "archiver": "^7.0.1",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.8",
     "express": "^4.21.0",
+    "firebase": "^10.14.0",
+    "firebase-admin": "^12.6.0",
+    "moment": "^2.30.1",
     "node-fetch": "^3.3.2",
-    "serve-favicon": "^2.4.5"
+    "request": "^2.88.2",
+    "serve-favicon": "^2.4.5",
+    "zip-stream": "^6.0.1"
   },
   "devDependencies": {
     "eslint": "^8.24.0",

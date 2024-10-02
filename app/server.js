@@ -3,6 +3,9 @@ import favicon from 'serve-favicon';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import ejs from 'ejs';
+import bodyParser from 'body-parser';
+
+import './worker.js'
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url); // get the resolved path to the file
@@ -17,6 +20,11 @@ app.use('/coverage', express.static(path.join(__dirname, '..', 'coverage')));
 app.engine('.html', ejs.__express);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 
 // load route
 import * as routes from './route.js';
