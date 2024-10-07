@@ -26,8 +26,23 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
     extended: true
 }));
 
+app.use(async (req, res, next) => {
+    let ip = req.headers['x-forwarded-for'] ||
+        req.socket.remoteAddress ||
+        null;
+
+    let allowedToAccess = await TokenBucket.updateBucket(ip)
+
+    if (allowedToAccess) {
+        next()
+    } else {
+        return res.status(429).send({error: 'Too many request'});
+    }
+})
+
 // load route
 import * as routes from './route.js';
+import TokenBucket from "./TokenBucket.js";
 routes.route(app);
 
 // server
